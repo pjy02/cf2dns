@@ -3,9 +3,10 @@ name: 'GitHub Actions CloudFlare2DNSPod Bot'
 on:
   push:
     branches: 
-      - master
+      - main
   schedule:
-    - cron: '*/16 * * * *'
+   - cron: '*/5 * * * *'  
+  workflow_dispatch:  
 
 jobs:
   build:
@@ -16,7 +17,7 @@ jobs:
       - name: 'Set up Python'
         uses: actions/setup-python@v4
         with:
-          python-version: 3.7
+          python-version: '3.11' 
       - name: 'Install dependencies'
         run: if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: 'run cf2dns'
